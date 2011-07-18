@@ -1,0 +1,28 @@
+# File name fixes for thetvdb.com.
+# Special Characters are acceptable here, they will be removed befor renaming.
+
+'csi miami':                      'CSI: Miami'
+'csi crime scene investigation':  'CSI: Crime Scene Investigation'
+'csi':                            'CSI: Crime Scene Investigation'
+'csi- ny':                        'CSI: NY'
+'castle 2009':                    'Castle (2009)'
+'castle':                         'Castle (2009)'
+'ncis los angeles':               'NCIS: Los Angeles'
+'law and order svu':              'Law & Order: Special Victims Unit'
+'law and order la':               'Law & Order: Los Angeles'
+'criminal minds suspect behavior': 'Criminal Minds: Suspect Behavior'
+'top chef masters':               'Top Chef: Masters'
+'the office us':                  'the office (us)'
+'the office':                     'The Office (US)'
+'doctor who 2005':                'Doctor Who (2005)'
+'mike and molly':                 'Mike & Molly'
+'aaf-sytycduk':                   'So You Think You Can Dance UK'
+'franklin and bash':              'Franklin & Bash'
+'jamie olivers food revolution':  "Jamie Oliver's Food Revolution"
+'the voice':                      'The Voice (US)'
+'masterchef us':                  'Masterchef (US)'
+'masterchef':                     'Masterchef (US)'
+'sanctuary us':                   'Sanctuary'
+'americas got talent':            "America's Got Talent"
+"wilfred us":                     "Wilfred (US)"
+'dragonsden':                     "Dragons' Den"
