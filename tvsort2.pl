@@ -20,7 +20,7 @@ my $fixes = LoadFile $fixy;
 foreach my $sort (@sort) {
   my $old = $sort;
   if (
-    $sort =~ s/.*\/(.*?)[\.\s][sS](\d+).*?[eE](\d+).*?(\.[maw][kvm][viv])// )
+    $sort =~ s/.*\/(.*?)[\.\s][sS](\d+).*?[eE](\d+).*?(\.[maw][kvm][vi])// )
   {
     my $title   = lc $1;
     my $season  = $2;
