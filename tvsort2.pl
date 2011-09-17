@@ -20,7 +20,7 @@ my $fixes = LoadFile $fixy;
 foreach my $sort (@sort) {
   my $old = $sort;
   if (
-    $sort =~ s/.*\/(.*?)[\.\s][sS](\d+).*?[eE](\d+).*?(\.[wmv|mkv|avi|m4v|mp4])// )
+    $sort =~ s/.*\/(.*?)[\.\s][sS](\d+).*?[eE](\d+).*?(\.[maw][kvm][viv])// )
   {
     my $title   = lc $1;
     my $season  = $2;
