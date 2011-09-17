@@ -20,14 +20,14 @@ my $fixes = LoadFile $fixy;
 foreach my $sort (@sort) {
   my $old = $sort;
   if (
-    $sort =~ s/.*\/(.*?)[\.\s][sS](\d+).*?[eE](\d+).*?(\.[wmv|mkv|avi|m4v|mp4])// )
+    $sort =~ s/.*\/(.*?)[\.\s][sS](\d+).*?[eE](\d+).*?(\.[mMaA][kKvV][vViI])// )
   {
     my $title   = lc $1;
     my $season  = $2;
     my $episode = $3;
     my $ext     = $4;
     $title =~ s/[\._]/ /g;
-    $title =~ s/[,'\!"`:]//g;
+    $title =~ s/[,'\!"`]//g;
 
     foreach my $key ( keys %$fixes ) {
 
@@ -48,8 +48,8 @@ foreach my $sort (@sort) {
     my $eName = $tvdb->getEpisodeName( $sName, $season, $episode );
 
     if ( defined $sName && defined $eName ) {
-      $sName =~ tr/[\/:;,'!?.]//d;
-      $eName =~ tr/[\/:;,'!?.]//d;
+      $sName =~ tr/[;,'!?]//d;
+      $eName =~ tr/[;,'!?]//d;
       $sName =~ s/&/and/g;
       $eName =~ s/&/and/g;
 
