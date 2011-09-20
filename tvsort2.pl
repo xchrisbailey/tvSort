@@ -10,9 +10,9 @@ use YAML::XS qw(LoadFile);
 use Term::ExtendedColor qw(:all);
 
 my @sort = <~chris/media/sort/tv/*.{mkv,avi}>;
-my $orig = '/home/chris/media/sort/tv/';
-my $fixy = '/home/chris/.config/tvsort/fixes.yaml';
-my $dest = '/mnt/media01/TV/';
+my $orig = '/home/chris/media/sort/tv/'; # Location of files to be sorted
+my $fixy = '/home/chris/.config/tvsort/fixes.yaml'; # show name correction file
+my $dest = '/mnt/media01/TV/'; #where to send the show
 my $tvdb = TVDB::API::new( '6C29C1F6969822E9', 'en' );
 
 my $fixes = LoadFile $fixy;
