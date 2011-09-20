@@ -1,5 +1,5 @@
 # File name fixes for thetvdb.com.
-# Special Characters are acceptable here, they will be removed befor renaming.
+# Special Characters are acceptable here, they will be removed prior to file  renaming.
 
 'csi miami':                      'CSI: Miami'
 'csi crime scene investigation':  'CSI: Crime Scene Investigation'
@@ -26,3 +26,19 @@
 'americas got talent':            "America's Got Talent"
 "wilfred us":                     "Wilfred (US)"
 'dragonsden':                     "Dragons' Den"
+'hells kitchen':                  "Hell's Kitchen"
+'hells kitchen us':               "Hell's Kitchen"
+'awkward':                        'awkward.'
+'eastbound and down':             'Eastbound & Down'
+'richard hammonds journey to the': "Richard Hammond's Journey To..."
+'diners drive ins and dives':     "Diners, Drive-ins and Dives"
+'the code':                       'The Code (UK)'
+'the x factor uk':                'The X Factor'
+'csi new york':                   'CSI: NY'
+'top chef just desserts':         'Top Chef: Just Desserts'
+'bsg':                            'Battlestar Galactica (2003)'
+'restaurant impossible':          'Restaurant: Impossible'
+'free agents us':                 'Free Agents (US)'
+'its always sunny in philadelphia': "It's Always Sunny in Philadelphia"
+'love hate':                      'LOVE/HATE'
+'hawaii five-0 2010':             'Hawaii Five-O'
