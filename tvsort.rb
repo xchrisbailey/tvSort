@@ -1,4 +1,5 @@
 #!/usr/bin/ruby
+require 'smart_colored/extend'
 require 'tvdb_party'
 require 'yaml'
 
@@ -7,27 +8,28 @@ def colorize (text, colorCode)
 end
 
 
-tvdb = TvdbParty::Search.new("6C29C1F6969822E9", "en")
-myCorrections = YAML::load(File.open('/home/chris/.config/tvsort/fixes.yaml'))
+Tvdb = TvdbParty::Search.new("6C29C1F6969822E9", "en")
+MyCorrections = YAML::load(File.open('/home/chris/.config/tvsort/fixes.yaml'))
 
-oDest = '/mnt/media01/sort/'
-nDest = '/mnt/media01/TV/'
-unClean = Dir.glob(oDest + '{*.{mkv,avi,wmv,m4v},**}/*.{mkv,avi,wmv,m4v}')
+OrigDest = '/mnt/media01/sort/'
+NewDest = '/mnt/media01/TV/'
+#unClean = Dir.glob('/mnt/media01/sort/{*.{mkv,avi,wmv,m4v},**}/*.{mkv,avi,wmv,m4v}')
+UnClean = Dir.glob(OrigDest + '{*.{mkv,avi,wmv,m4v},**}/*.{mkv,avi,wmv,m4v}')
 
-sortReport = Array.new
+sort_report = Array.new
 
-unTV = Array.new
-unClean.each do |f|
-  unTV.push(f) if f =~ /[sS]\d+[eE]\d+/
-  unTV.push(f) if f =~ /\d+x\d+/
-  unTV.push(f) if f =~ /\d+\d{2}/
-  unTV
+unclean_tv = Array.new
+UnClean.each do |f|
+  unclean_tv.push(f) if f =~ /[sS]\d+[eE]\d+/
+  unclean_tv.push(f) if f =~ /\d+x\d+/
+#  unclean_tv.push(f) if f =~ /\d+\d{2}/
+  unclean_tv
 end
 
-unTV.each do |f|
-  copyFileFrom = f
+unclean_tv.each do |f|
+  copy_file_from = f
 
-  f = f.gsub(/\d+\d{2}/, "S#{$1}E#{$2}") if f =~ /(\d+)(\d{2})/
+#  f = f.gsub(/\d+\d{2}/, "S#{$1}E#{$2}") if f =~ /(\d+)(\d{2})/
   f = f.gsub(/\d+x\d+/, "S#{$1}E#{$2}") if f=~/(\d+)x(\d+)/
   
   f =~ /.*\/(.*?)[\.\s][sS](\d+)[eE](\d+).*?(\.[mMaAwW][kKvVmM][vViI])/
@@ -35,48 +37,48 @@ unTV.each do |f|
   series = series.gsub(/[\._]/, ' ')
 
   # Check for file names that need to be adjusted for thetvdb to recognize.
-  myCorrections.each { |k, v| series = v if series == k }
+  MyCorrections.each { |k, v| series = v if series == k }
 
   # Grab episode title and series naming from tvdb
-  results     = tvdb.search("#{series}")
-  results     = results[0]
-  serID       = tvdb.get_series_by_id(results['seriesid'])
-  series      = serID.name 
-  tempEpisode = serID.get_episode(season, episode) || next
-  epiTitle    = tempEpisode.name
+  results       = Tvdb.search("#{series}")
+  results       = results[0]
+  series_id     = Tvdb.get_series_by_id(results['seriesid'])
+  series        = series_id.name 
+  temp_episode  = series_id.get_episode(season, episode) || next
+  episode_title = temp_episode.name
 
   # Clean up characters for boxee
   series   = series.gsub(/[\/:;,'!?.]/, '')
   series   = series.gsub(/&/, 'and')
-  epiTitle = epiTitle.gsub(/[\/:;,'!?.]/, '')
-  epiTitle = epiTitle.gsub(/&/, 'and')
+  episode_title = episode_title.gsub(/[\/:;,'!?.]/, '')
+  episode_title = episode_title.gsub(/&/, 'and')
 
   # Give two digit season & episode numbers
   season  = season.to_s.rjust(2, '0')
   episode = episode.to_s.rjust(2, '0')
 
-  newFile = "#{series}.S#{season}E#{episode}.#{epiTitle}#{exten}"
-  folderName = "#{series}/Season#{season}/"
+  new_file = "#{series}.S#{season}E#{episode}.#{episode_title}#{exten}"
+  folder_name = "#{series}/Season#{season}/"
 
   # Check for and make directories if needed.
-  fileDestination = "#{nDest}#{folderName}"
-  FileUtils.mkdir_p("#{nDest}#{series}/Season#{season}") if Dir.exist?("#{nDest}#{series}/Season#{season}") == false
+  fileDestination = "#{NewDest}#{folder_name}"
+  FileUtils.mkdir_p("#{NewDest}#{series}/Season#{season}") if Dir.exist?("#{NewDest}#{series}/Season#{season}") == false
 
   # Move and organize the show
-  moveFrom = "#{copyFileFrom}"
-  moveTo   = "#{nDest}#{folderName}#{newFile}"
-  next if File.exist?(moveTo) == true
-  FileUtils.mv(moveFrom, moveTo)
-  sortReport << newFile
+  move_from = "#{copy_file_from}"
+  move_to   = "#{NewDest}#{folder_name}#{new_file}"
+  next if File.exist?(move_to) == true
+  FileUtils.mv(move_from, move_to)
+  sort_report << new_file
 end
 
 
-if sortReport.length > 0
+if sort_report.length > 0
   puts "\e[1;31mShows ready for viewing:\e[0m"
-  sortReport.each do |f| 
-    rColor = 31+Random.rand(6)
-    rColor = "\e[" + rColor.to_s + "m"
-    puts colorize("#{f}", rColor)
+  sort_report.each do |f| 
+    rand_color = 31+Random.rand(6)
+    rand_color = "\e[" + rand_color.to_s + "m"
+    puts colorize("#{f}", rand_color)
   end
 else
   puts "\e[1;40;35mNo new shows. =(\e[0m"
