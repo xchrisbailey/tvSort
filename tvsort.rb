@@ -40,12 +40,16 @@ unclean_tv.each do |f|
   MyCorrections.each { |k, v| series = v if series == k }
 
   # Grab episode title and series naming from tvdb
-  results       = Tvdb.search("#{series}")
-  results       = results[0]
-  series_id     = Tvdb.get_series_by_id(results['seriesid'])
-  series        = series_id.name 
-  temp_episode  = series_id.get_episode(season, episode) || next
-  episode_title = temp_episode.name
+  begin
+    results       = Tvdb.search("#{series}")
+    results       = results[0]
+    series_id     = Tvdb.get_series_by_id(results['seriesid'])
+    series        = series_id.name 
+    temp_episode  = series_id.get_episode(season, episode)
+    episode_title = temp_episode.name
+  rescue
+    next
+  end
 
   # Clean up characters for boxee
   series   = series.gsub(/[\/:;,'!?.]/, '')
