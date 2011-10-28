@@ -8,3 +8,8 @@ Config
 ======
 fixes.yaml fixes names to be reconized with thetvdb ( by default it's looked for
 in ~/.config/tvsort/ )
+
+ToDo
+====
+- allow input of new name for unknown show
+
