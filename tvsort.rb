@@ -1,11 +1,6 @@
 #!/usr/bin/ruby
-require 'smart_colored/extend'
 require 'tvdb_party'
 require 'yaml'
-
-def colorize (text, colorCode)
-  "#{colorCode}#{text}\e[0m"
-end
 
 
 Tvdb = TvdbParty::Search.new("6C29C1F6969822E9", "en")
@@ -76,13 +71,13 @@ unclean_tv.each do |f|
   sort_report << new_file
 end
 
-
 if sort_report.length > 0
+  last_color = 0
   puts "\e[1;31mShows ready for viewing:\e[0m"
   sort_report.each do |f| 
     rand_color = 31+Random.rand(6)
     rand_color = "\e[" + rand_color.to_s + "m"
-    puts colorize("#{f}", rand_color)
+    puts "\e[34m\t'-- #{rand_color}#{f}\e[0m"
   end
 else
   puts "\e[1;40;35mNo new shows. =(\e[0m"
