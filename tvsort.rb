@@ -72,7 +72,6 @@ unclean_tv.each do |f|
 end
 
 if sort_report.length > 0
-  last_color = 0
   puts "\e[1;31mShows ready for viewing:\e[0m"
   sort_report.each do |f| 
     rand_color = 31+Random.rand(6)
