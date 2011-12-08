@@ -27,7 +27,7 @@ unclean_tv.each do |f|
 #  f = f.gsub(/\d+\d{2}/, "S#{$1}E#{$2}") if f =~ /(\d+)(\d{2})/
   f = f.gsub(/\d+x\d+/, "S#{$1}E#{$2}") if f=~/(\d+)x(\d+)/
   
-  f =~ /.*\/(.*?)[\.\s][sS](\d+)[eE](\d+).*?(\.[mMaAwW][kKvVmM][vViI])/
+  f =~ /.*\/(.*?)[\.\s][sS](\d+)[eE](\d+).*?(\.[mMaAwW][kKvVmM4][vViI])/
   series, season, episode, exten  = $1.downcase, $2.to_i, $3.to_i, $4
   series = series.gsub(/[\._]/, ' ')
 
@@ -76,7 +76,7 @@ if sort_report.length > 0
   sort_report.each do |f| 
     rand_color = 31+Random.rand(6)
     rand_color = "\e[" + rand_color.to_s + "m"
-    puts "\e[34m\t'-- #{rand_color}#{f}\e[0m"
+    puts "\e[34m  '-- #{rand_color}#{f}\e[0m"
   end
 else
   puts "\e[1;40;35mNo new shows. =(\e[0m"
