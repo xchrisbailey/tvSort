@@ -15,21 +15,33 @@ sort_report = Array.new
 
 unclean_tv = Array.new
 UnClean.each do |f|
-  unclean_tv.push(f) if f =~ /[sS]\d+[eE]\d+/
-  unclean_tv.push(f) if f =~ /\d+x\d+/
-#  unclean_tv.push(f) if f =~ /\d+\d{2}/
+  unclean_tv.push(f) and next if f =~ /[sS]\d+[eE]\d+/
+  unclean_tv.push(f) and next if f =~ /\d+x\d+/
+  unclean_tv.push(f) and next if f =~ /.*[1950-2020].*\.\d+\d{2}/
+  unclean_tv.push(f) and next if f =~ /.*\.\d+\d{2}/
   unclean_tv
 end
 
 unclean_tv.each do |f|
   copy_file_from = f
 
-#  f = f.gsub(/\d+\d{2}/, "S#{$1}E#{$2}") if f =~ /(\d+)(\d{2})/
-  f = f.gsub(/\d+x\d+/, "S#{$1}E#{$2}") if f=~/(\d+)x(\d+)/
+  if f =~ /(.*[1950-2020].*\.)(\d+)(\d{2})/
+    f = f.gsub(/.*[1950-2020].*\.\d+\d{2}/, "#{$1}S#{$2}E#{$3}")
+  elsif f =~ /(\d+)(\d{2})/
+    f = f.gsub(/\d+\d{2}/, "S#{$1}E#{$2}")
+  elsif f =~ /(\d+)x(\d+)/
+    f = f.gsub(/\d+x\d+/, "S#{$1}E#{$2}")
+  end
+
+  puts f
   
-  f =~ /.*\/(.*?)[\.\s][sS](\d+)[eE](\d+).*?(\.[mMaAwW][kKvVmM4][vViI])/
-  series, season, episode, exten  = $1.downcase, $2.to_i, $3.to_i, $4
-  series = series.gsub(/[\._]/, ' ')
+  begin
+    f =~ /.*\/(.*?)[\.\s][sS](\d+)[eE](\d+).*?(\.[mMaAwW][kKvVmM4][vViI])/
+    series, season, episode, exten  = $1.downcase, $2.to_i, $3.to_i, $4
+    series = series.gsub(/[\._]/, ' ')
+  rescue
+    next
+  end
 
   # Check for file names that need to be adjusted for thetvdb to recognize.
   MyCorrections.each { |k, v| series = v if series == k }
