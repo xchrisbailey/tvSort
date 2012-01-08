@@ -33,8 +33,6 @@ unclean_tv.each do |f|
     f = f.gsub(/\d+x\d+/, "S#{$1}E#{$2}")
   end
 
-  puts f
-  
   begin
     f =~ /.*\/(.*?)[\.\s][sS](\d+)[eE](\d+).*?(\.[mMaAwW][kKvVmM4][vViI])/
     series, season, episode, exten  = $1.downcase, $2.to_i, $3.to_i, $4
