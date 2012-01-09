@@ -6,8 +6,7 @@ sort tv shows with information from thetvdb
 
 Config
 ======
-fixes.yaml fixes names to be reconized with thetvdb ( by default it's looked for
-in ~/.config/tvsort/ )
+fixes.yaml - fixes names to be reconized with thetvdb (copy fixes.yaml to ~/.config/tvsort/)
 
 ToDo
 ====
