@@ -1,6 +1,15 @@
 # File name fixes for thetvdb.com.
 # Special Characters are acceptable here, they will be removed prior to file  renaming.
 
+'louie':                          'Louie (2010)'
+'snooki and jwoww':               'Snooki & JWOWW'
+'tosh 0':                         'Tosh.0'
+'richard hammonds crash course':  "Richard Hammond's Crash Course"
+'dont trust the bitch in apartment 23': "Don't Trust the B---- in Apartment 23"
+'the lxd':                        'The Legion of Extraordinary Dancers'
+'icrap-dirty jobs':               'Dirty Jobs'
+'the river':                      'The River (2012)'
+'psig-the river':                 'The River (2012)'
 'csi miami':                      'CSI: Miami'
 'csi crime scene investigation':  'CSI: Crime Scene Investigation'
 'csi':                            'CSI: Crime Scene Investigation'
