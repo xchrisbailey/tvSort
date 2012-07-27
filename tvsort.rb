@@ -8,9 +8,7 @@ MyCorrections = YAML::load(File.open('/home/chris/.config/tvsort/fixes.yaml'))
 
 OrigDest = '/mnt/media01/sort/'
 NewDest = '/mnt/media01/TV/'
-#unClean = Dir.glob('/mnt/media01/sort/{*.{mkv,avi,wmv,m4v},**}/*.{mkv,avi,wmv,m4v}')
-UnClean = Dir.glob(OrigDest + '{*.{mkv,avi,wmv,m4v},**}/*.{mkv,avi,wmv,m4v}')
-
+UnClean = Dir.glob(OrigDest + '{*.{mkv,avi,wmv,mp4},**}/*.{mkv,avi,wmv,mp4}')
 sort_report = Array.new
 
 unclean_tv = Array.new
@@ -24,17 +22,19 @@ end
 
 unclean_tv.each do |f|
   copy_file_from = f
-
-  if f =~ /(.*[1950-2020].*\.)(\d+)(\d{2})/
-    f = f.gsub(/.*[1950-2020].*\.\d+\d{2}/, "#{$1}S#{$2}E#{$3}")
-  elsif f =~ /(\d+)(\d{2})/
-    f = f.gsub(/\d+\d{2}/, "S#{$1}E#{$2}")
-  elsif f =~ /(\d+)x(\d+)/
-    f = f.gsub(/\d+x\d+/, "S#{$1}E#{$2}")
-  end
+  f = case f
+      when /[sS]\d+[eE]\d+/
+        f
+      when /(.*[1950-2020].*\.)(\d+)(\d{2})/
+        f.gsub(/.*[1950-2020].*\.\d+\d{2}/, "#{$1}S#{$2}E#{$3}")
+      when /(\d+)(\d{2})/
+        f.gsub(/\d+\d{2}/, "S#{$1}E#{$2}")
+      when /(\d+)x(\d+)/
+        f.gsub(/\d+x\d+/, "S#{$1}E#{$2}")
+      end
 
   begin
-    f =~ /.*\/(.*?)[\.\s][sS](\d+)[eE](\d+).*?(\.[mMaAwW][kKvVmM4][vViI])/
+    f =~ /.*\/(.*?)[\.\s][sS](\d+)[eE](\d+).*?(\.[mMaAwW][kKvVmMpP][vViI4])/
     series, season, episode, exten  = $1.downcase, $2.to_i, $3.to_i, $4
     series = series.gsub(/[\._]/, ' ')
   rescue
@@ -42,7 +42,7 @@ unclean_tv.each do |f|
   end
 
   # Check for file names that need to be adjusted for thetvdb to recognize.
-  MyCorrections.each { |k, v| series = v if series == k }
+  series = MyCorrections[series] if MyCorrections.key?(series) == true
 
   # Grab episode title and series naming from tvdb
   begin
