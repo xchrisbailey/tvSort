@@ -1,6 +1,7 @@
 # File name fixes for thetvdb.com.
 # Special Characters are acceptable here, they will be removed prior to file  renaming.
-
+'childrens hospital us':          'Childrens Hospital'
+'dark matters twisted but true':  'Dark Matters'
 'louie':                          'Louie (2010)'
 'snooki and jwoww':               'Snooki & JWOWW'
 'tosh 0':                         'Tosh.0'
@@ -29,6 +30,11 @@
 'aaf-sytycduk':                   'So You Think You Can Dance UK'
 'franklin and bash':              'Franklin & Bash'
 'jamie olivers food revolution':  "Jamie Oliver's Food Revolution"
+'lv':                             'Las Vegas'
+'emily owens m d':                'Emily Owens, M.D'
+'key and peele':                  'Key & Peele'
+'once upon a time':               'Once Upon a Time (2011)'
+'revolution 2012':                'revolution'
 'the voice':                      'The Voice (US)'
 'masterchef us':                  'Masterchef (US)'
 'masterchef':                     'Masterchef (US)'
@@ -67,3 +73,5 @@
 'jamie olivers food revolution':  "Jamie Oliver's Food Revolution"
 'project runway all-stars':       'Project Runway All Stars'
 'rachael vs guy celebrity cook off': 'Rachael vs. Guy: Celebrity Cook-Off' 
+'Scooby-Doo Where Are You':       'Scooby-Doo, Where Are You!'
+'scooby doo mystery incorporated': 'Scooby-Doo! Mystery Incorporated'
