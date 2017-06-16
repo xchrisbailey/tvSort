@@ -1,17 +1,18 @@
 #!/usr/bin/ruby
-require 'tvdb_party'
-require 'yaml'
+# encoding: UTF-8
 
+require 'tvdb_party'
+require 'psych'
 
 Tvdb = TvdbParty::Search.new("6C29C1F6969822E9", "en")
-MyCorrections = YAML::load(File.open('/home/chris/.config/tvsort/fixes.yaml'))
+MyCorrections = Psych.load(File.open('/home/chris/.config/tvsort/fixes.yaml'))
 
 OrigDest = '/mnt/media01/sort/'
 NewDest = '/mnt/media01/TV/'
-UnClean = Dir.glob(OrigDest + '{*.{mkv,avi,wmv,mp4},**}/*.{mkv,avi,wmv,mp4}')
-sort_report = Array.new
+UnClean = Dir.glob(OrigDest + '{*.{mkv,avi,wmv,mp4,ts},**}/*.{mkv,avi,wmv,mp4,ts}')
+sort_report = []
+unclean_tv = []
 
-unclean_tv = Array.new
 UnClean.each do |f|
   unclean_tv.push(f) and next if f =~ /[sS]\d+[eE]\d+/
   unclean_tv.push(f) and next if f =~ /\d+x\d+/
@@ -34,7 +35,7 @@ unclean_tv.each do |f|
       end
 
   begin
-    f =~ /.*\/(.*?)[\.\s][sS](\d+)[eE](\d+).*?(\.[mMaAwW][kKvVmMpP][vViI4])/
+    f =~ /.*\/(.*?)[\.\s][sS](\d+)[eE](\d+).*?(\.[mMaAwW][kKvVmMpP][vViI4]|\.ts)/
     series, season, episode, exten  = $1.downcase, $2.to_i, $3.to_i, $4
     series = series.gsub(/[\._]/, ' ')
   rescue
@@ -49,19 +50,23 @@ unclean_tv.each do |f|
     results       = Tvdb.search("#{series}")
     results       = results[0]
     series_id     = Tvdb.get_series_by_id(results['seriesid'])
-    series        = series_id.name 
+    series        = series_id.name
     temp_episode  = series_id.get_episode(season, episode)
     episode_title = temp_episode.name
-  rescue
+  rescue Exception => e
     next
   end
 
   # Clean up characters for boxee
-  series   = series.gsub(/[\/:;,'!?.]/, '')
-  series   = series.gsub(/&/, 'and')
-  episode_title = episode_title.gsub(/[\/:;,'!?.]/, '')
-  episode_title = episode_title.gsub(/&/, 'and')
-
+  begin
+    series   = series.gsub(/[\/:;,'!?.\*]/, '')
+    series   = series.gsub(/&/, 'and')
+    episode_title = episode_title.gsub(/[\/:;,'!?.\*]/, '')
+    episode_title = episode_title.gsub(/&/, 'and')
+  rescue Exception => e
+    puts "Series information not found: #{e}"
+    next
+  end
   # Give two digit season & episode numbers
   season  = season.to_s.rjust(2, '0')
   episode = episode.to_s.rjust(2, '0')
@@ -76,14 +81,14 @@ unclean_tv.each do |f|
   # Move and organize the show
   move_from = "#{copy_file_from}"
   move_to   = "#{NewDest}#{folder_name}#{new_file}"
-  next if File.exist?(move_to) == true
-  FileUtils.mv(move_from, move_to)
+  #next if File.exist?(move_to) == true
+  FileUtils.mv(move_from, move_to, force: true)
   sort_report << new_file
 end
 
 if sort_report.length > 0
   puts "\e[1;31mShows ready for viewing:\e[0m"
-  sort_report.each do |f| 
+  sort_report.each do |f|
     rand_color = 31+Random.rand(6)
     rand_color = "\e[" + rand_color.to_s + "m"
     puts "\e[34m  '-- #{rand_color}#{f}\e[0m"
