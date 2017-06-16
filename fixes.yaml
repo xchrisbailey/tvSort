@@ -1,5 +1,10 @@
 # File name fixes for thetvdb.com.
 # Special Characters are acceptable here, they will be removed prior to file  renaming.
+'cake boss next great baker':     'Next Great Baker'
+'storage wars ny':                'Storage Wars New York'
+'chpd':                           'Chopped'
+'the next iron chef redemption':  'The Next Iron Chef'
+'the neighbors 2012':             'The Neighbors'
 'childrens hospital us':          'Childrens Hospital'
 'dark matters twisted but true':  'Dark Matters'
 'louie':                          'Louie (2010)'
@@ -26,6 +31,9 @@
 'the office':                     'The Office (US)'
 'doctor who 2005':                'Doctor Who (2005)'
 'doctor_who_2005':                'Doctor Who (2005)'
+'doctor who':                     'Doctor Who (2005)'
+'Doctor Who':                     'Doctor Who (2005)'
+'zombieland the series':          'Zombieland'
 'mike and molly':                 'Mike & Molly'
 'aaf-sytycduk':                   'So You Think You Can Dance UK'
 'franklin and bash':              'Franklin & Bash'
@@ -42,8 +50,8 @@
 'americas got talent':            "America's Got Talent"
 "wilfred us":                     "Wilfred (US)"
 'dragonsden':                     "Dragons' Den"
-'hells kitchen':                  "Hell's Kitchen"
-'hells kitchen us':               "Hell's Kitchen"
+'hells kitchen':                  "Hell's Kitchen (US)"
+'hells kitchen us':               "Hell's Kitchen (US)"
 'awkward':                        'awkward.'
 'eastbound and down':             'Eastbound & Down'
 'richard hammonds journey to the': "Richard Hammond's Journey To..."
@@ -54,6 +62,7 @@
 'top chef just desserts':         'Top Chef: Just Desserts'
 'bsg':                            'Battlestar Galactica (2003)'
 'restaurant impossible':          'Restaurant: Impossible'
+'RI':                             'Restaurant: Impossible'
 'free agents us':                 'Free Agents (US)'
 'its always sunny in philadelphia': "It's Always Sunny in Philadelphia"
 'love hate':                      'LOVE/HATE'
@@ -63,7 +72,6 @@
 'the x factor us':                'The X Factor (US)'
 'prime suspect us':               'Prime Suspect (US)'
 'charlies angels 2011':           "Charlie's Angels (2011)"
-'kitchen nightmares us':          'kitchen nightmares'
 'last man standing':              'Last Man Standing (2011)'
 'last man standing us':           'Last Man Standing (2011)'
 'work of art the next great artist' : 'Work of Art: The Next Great Artist'
@@ -72,6 +80,43 @@
 'great expectations 2011':        'Great Expectations (2011)'
 'jamie olivers food revolution':  "Jamie Oliver's Food Revolution"
 'project runway all-stars':       'Project Runway All Stars'
-'rachael vs guy celebrity cook off': 'Rachael vs. Guy: Celebrity Cook-Off' 
+'project runway allstars':       'Project Runway All Stars'
+'rachael vs guy celebrity cook off': 'Rachael vs. Guy: Celebrity Cook-Off'
 'Scooby-Doo Where Are You':       'Scooby-Doo, Where Are You!'
 'scooby doo mystery incorporated': 'Scooby-Doo! Mystery Incorporated'
+'switch uk':                      'switch (2012)'
+'catfish the tv show':            'Catfish: The TV Show'
+'zero hour us':                   'Zero Hour (2013)'
+'auctionhunters':                 'Auction Hunters'
+'get out alive 2013':             'Get Out Alive with Bear Grylls'
+'whodunnit 2013':                 'Whodunnit?'
+'brooklyn nine nine':             'Brooklyn Nine-Nine'
+'marvel agents of shield':        "Marvel's Agents of S.H.I.E.L.D."
+'marvels agents of shield':       "Marvel's Agents of S.H.I.E.L.D."
+'marvels agents of s h i e l d':  "Marvel's Agents of S.H.I.E.L.D."
+'the tomorrow people us':         "The Tomorrow People (2013)"
+'the goldbergs':                  "The Goldbergs (2013)"
+'atlantis 2013':                  "Atlantis"
+'intelligence us':                "Intelligence (2014)"
+'intelligence':                   "Intelligence (2014)"
+'mind games':                     "Mind Games (2014)"
+'prey uk':                        "Prey (2014)"
+'brandi and jarrod married to the job': "Brandi & Jarrod: Married to the Job"
+'the code au':                    "The Code (2014)"
+'forever us':                     "Forever (2014)"
+'marry me 2014':                  "Marry Me (2014)"
+'marry me':                       "Marry Me (2014)"
+'transporter the series':         "Transporter"
+'the librarians us':              "The Librarians (2014)"
+'Bizarre Foods Delicious Destinations': 'Bizarre Foods: Delicious Destinations'
+"Aquarius US":                       "Aquarius (2015)"
+"not safe for work uk":           "Not Safe for Work (2015)"
+"stargate sg1":                   "Stargate SG-1"
+"the magicians us":             "The Magicians (2015)"
+"pawn stars sa":                  "Pawn Stars (SA)"
+"my kitchen rules new zealand": "My Kitchen Rules NZ"
+"mythbusters-the search":       "Mythbusters: The Search"
+"masterchef uk":                "Masterchef"
+"trial and error":              "Trial and Error (2017)"
+"making history":               "Making History (2017)"
+"making history us":            "Making History (2017)"
